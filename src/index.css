@@ -1,0 +1,84 @@
+/* Fonts  */
+@import url(https://fonts.googleapis.com/css?family=Prata:regular&display=swap);
+@import url(https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900&display=swap);
+
+/* Reset styles */
+*,
+*:after,
+*:before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body,
+html {
+    height: 100%;
+}
+
+input:focus,
+textarea:focus {
+    outline: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+button {
+    border: 0;
+    outline: none;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+input, placeholder {
+    font-family: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+}
+
+input {
+    border: none;
+    background: transparent;
+}
+
+/* Variables  */
+:root {
+    /* Colors  */
+    --black: #000;
+    --beige: #FAEED1;
+    
+    /* Typography  */
+    --prata: 'Prata';
+    --main-headline: 60px;
+    --secondary-headline: 20px;
+    
+    --montserrat: 'Montserrat', sans-serif;
+    --text: 15px;
+}
+
+/* Main styles  */
+body {
+    background: var(--beige);
+    background-image: url('./assets/noise-bg.png');
+    color: var(--black);
+    font-family: var(--montserrat);
+    font-size: var(--text);
+}
+
+
