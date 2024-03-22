@@ -1,9 +1,16 @@
 // Import Libraries
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
+import axios from 'axios'
+import { useParams } from 'react-router'
 
-import BookCoverImage from '../assets/book-cover.jpg'
+
+// Import Components
 import { BackButton } from '../components/ui/BackButton'
+
+
+// Import API 
+import { BOOKS_DETAILS_API } from '../api/API'
 
 
 const Container = styled.div`
@@ -49,30 +56,57 @@ const BookAuthor = styled.p`
     text-transform: uppercase;
 `
 
-const BookCountry = styled.p`
+const BookGenres = styled.p`
+    
+    font-size: 13px;
+`
+
+const BookQuote = styled.p`
     text-transform: uppercase;
+    font-size: var(--secondary-headline);
 `
 
 export const Book = () => {
+    const [book, setBook] = useState({})
+    const { id } = useParams()
+    const url = BOOKS_DETAILS_API
+
+    const FetchBookData = () => {
+        axios.get(`${url}/${id}`).then((response) => {
+            console.log(response.data)
+            setBook(response.data)
+        }).catch((error) => {
+            console.log(error)
+        })
+    }
+
+    useEffect(() => {
+        FetchBookData()
+    }, [id])
+
   return (
     <Container>
         <BackButton text='go back'/>
         <BookWrapper>
             <BookCover>
-                <BookImage src={BookCoverImage} alt='/'/>
+            <BookImage 
+                src={book?.image_url} 
+                alt={book?.title}/>
             </BookCover>
             <ContentWrapper>
                 <BookTitle>
-                    Harry Potter and Prisoner of Azkaban
+                    {book?.title}
                 </BookTitle>
                 <BookAuthor>
-                    Joan Rowling
+                    {book?.authors}
                 </BookAuthor>
-                <BookCountry>
-                    United Kingdom
-                </BookCountry>
-                <p>1999</p>
-                <p>Lorem ipsum dolor sit amet consectetur. In gravida congue morbi sed enim id ut. Pharetra nunc libero eu mauris. Tristique morbi aliquam pellentesque egestas non vitae ornare. Amet sit pellentesque justo faucibus purus pretium. Senectus duis rhoncus venenatis eu odio. Elementum massa quam odio et. Amet blandit tempus risus magna consectetur vestibulum. Felis vulputate auctor nam bibendum ullamcorper. Leo eget venenatis egestas risus. Duis nisl euismod pellentesque euismod a lectus commodo. Urna tincidunt tincidunt sagittis adipiscing fringilla tempor. At neque nibh mattis at odio placerat aliquet. Etiam quis nisi mollis consequat scelerisque amet. Suspendisse adipiscing varius ullamcorper posuere ut.</p>
+                <BookGenres>
+                    {book?.genres}
+                </BookGenres>
+                <BookQuote>
+                    {book?.Quote1}
+                </BookQuote>
+                <p>{book?.description}</p>
             </ContentWrapper>
         </BookWrapper>
     </Container>

@@ -1,26 +1,32 @@
 // Import Libraries
 import React from 'react'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 
 // Import Components
 import { Button } from '../components/ui/Button'
-import BookCover from '../assets/book-cover.jpg'
 
 
 // Style
+const ParentItemContainer = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`
 const ItemWrapper = styled.div`
     display: flex;
     align-items: center;
     gap: 30px;
     margin: 35px 0 100px 0;
+    width: 90%;
 `
 
 const ItemContent = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    flex: 2;
     gap: 20px;
 `
 
@@ -35,10 +41,6 @@ const ItemContentAuthor = styled.p`
     text-transform: uppercase;
 `
 
-const ItemCoverWrapper = styled.div`
-    flex: 1;
-`
-
 const ItemBookCover = styled.div`
     width: 280px;
     height: 409px;
@@ -50,28 +52,45 @@ const ItemBookImage = styled.img`
     height: 379px;
 `
 
+// Truncate description function 
+const truncateDescr = (description, maxLength) => {
+    if (description.length <= maxLength) {
+      return description;
+    } else {
+      let truncatedDescr = description.substring(0, maxLength);
+      truncatedDescr = truncatedDescr.substring(0, Math.min(truncatedDescr.length, truncatedDescr.lastIndexOf(" ")));
+      return truncatedDescr + "...";
+    }
+}
+
 
 // Component 
-export const FeaturedItem = () => {
+export const FeaturedItem = ({ id, image, title, authors, description }) => {
+    const truncatedDescr = truncateDescr(description, 195)
+
   return (
-    <ItemWrapper>
-        <ItemContent>
-            <ItemContentTitle>
-                Harry Potter and Prisoner of Azkaban
-            </ItemContentTitle>
-            <ItemContentAuthor>
-                Joan rowling
-            </ItemContentAuthor>
-            <p>
-            Lorem ipsum dolor sit amet consectetur. Eget sed diam blandit blandit. Sapien ut lacus non ligula aenean aliquet feugiat. Pellentesque non tincidunt facilisi sit. Augue tincidunt eu massa libero.
-            </p>
-            <Button text='Learn more'/>
-        </ItemContent>
-        <ItemCoverWrapper>
-            <ItemBookCover>
-                <ItemBookImage src={BookCover} alt='/'/>
-            </ItemBookCover>
-        </ItemCoverWrapper>
-    </ItemWrapper>
+    <ParentItemContainer>
+        <ItemWrapper>
+            <ItemContent>
+                <ItemContentTitle>
+                    {title}
+                </ItemContentTitle>
+                <ItemContentAuthor>
+                    {authors}
+                </ItemContentAuthor>
+                <p>
+                    {truncatedDescr}
+                </p>
+                <Link to={`books/${id}`}>
+                    <Button text='Learn more' />
+                </Link>
+            </ItemContent>
+            <div>
+                <ItemBookCover>
+                    <ItemBookImage src={image} alt={title}/>
+                </ItemBookCover>
+            </div>
+        </ItemWrapper>
+    </ParentItemContainer>
   )
 }

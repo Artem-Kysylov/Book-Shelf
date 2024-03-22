@@ -1,8 +1,7 @@
 // Import Libraries
 import React from 'react'
 import styled from 'styled-components'
-
-import BookCover from '../assets/book-cover.jpg'
+import { useNavigate } from 'react-router-dom'
 
 
 // Style
@@ -11,6 +10,7 @@ const BookItemWrapper = styled.div`
     flex-direction: column;
     align-items: flex-start;
     gap: 15px;
+    cursor: pointer;
 `
 
 const BookItemCover = styled.div`
@@ -35,27 +35,47 @@ const BookItemAuthor = styled.p`
     text-transform: uppercase;
 `
 
-const BookItemYear = styled.p`
+const BookItemGenre = styled.p`
     font-family: var(--montserrat);
+    font-size: 13px;
 `
+
+// Truncate title function 
+const truncateTitle = (title, maxLength) => {
+    if (title.length <= maxLength) {
+      return title;
+    } else {
+      let truncatedTitle = title.substring(0, maxLength);
+      truncatedTitle = truncatedTitle.substring(0, Math.min(truncatedTitle.length, truncatedTitle.lastIndexOf(" ")));
+      return truncatedTitle + "...";
+    }
+}
 
 
 // Component
-export const BookItem = () => {
+export const BookItem = ({ id, image, title, authors, genres  }) => {
+  const truncatedTitle = truncateTitle(title, 78)
+
+  const navigate = useNavigate()
+
+  const HandleClick = () => {
+    navigate(`books/${id}`)
+  }
+
   return (
-    <BookItemWrapper>
+    <BookItemWrapper onClick={HandleClick}>
       <BookItemCover>
-        <BookItemImage src={BookCover} alt="/" />
+        <BookItemImage src={image} alt={title} />
       </BookItemCover>
       <BookItemTitle>
-        Harry Potter and Prisoner of Azkaban
+        {truncatedTitle}
       </BookItemTitle>
       <BookItemAuthor>
-        Joan Rowling
+        {authors}
       </BookItemAuthor>
-      <BookItemYear>
-        1999
-      </BookItemYear>
+      <BookItemGenre>
+        {genres}
+      </BookItemGenre>
     </BookItemWrapper>
   )
 }

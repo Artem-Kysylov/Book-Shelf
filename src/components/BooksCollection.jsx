@@ -1,11 +1,16 @@
 // Import Libraries
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
+import axios from 'axios'
 
 
 // Import Components
 import { Input } from '../components/ui/Input'
 import { BookItem } from '../components/BookItem'
+
+
+// Import API 
+import { BOOKS_API } from '../api/API'
 
 
 // Style
@@ -49,9 +54,32 @@ const BooksItemsContainer = styled.div`
     margin-bottom: 100px;
 `
 
+// Generate random books collection 
+const getRandomInt = (min, max) => {
+    return Math.floor(Math.random() * (max - min + 1)) + min
+}
 
 // Component 
 export const BooksCollection = () => {
+    const [books, setBooks] = useState([])
+    const url = BOOKS_API
+
+    const randomStart = getRandomInt(0, 99)
+
+    const FetchData = () => {
+        axios.get(`${url}&_start=${randomStart}`)
+        .then((response) => {
+            console.log(response.data)
+            setBooks(response.data)
+        }).catch((error) => {
+            console.log(error)
+        })
+    }
+
+    useEffect(() => {
+        FetchData()
+    }, [])
+
   return (
     <Container>
         <TitleInputWrapper>
@@ -62,7 +90,18 @@ export const BooksCollection = () => {
             <Input/>
         </TitleInputWrapper>
         <BooksItemsContainer>
-            <BookItem/>
+        {
+            books.length > 0 && books.map((book) => (
+                <BookItem
+                    key={book.id}
+                    id={book.id}
+                    image={book.image_url}
+                    title={book.title}
+                    authors={book.authors}
+                    genres={book.genres}
+                />
+            ))
+        }             
         </BooksItemsContainer>
     </Container>
   )
