@@ -27,11 +27,15 @@ const StyledInput = styled.input`
 
 
 // Component 
-export const Input = () => {
+export const Input = (props) => {
   return (
     <InputWrapper>
         <CiSearch style={{height: '24px', width: '24px', color: '#AFA793'}} />
-        <StyledInput type="text" placeholder='Search your books...' />
+        <StyledInput 
+          type="text" 
+          placeholder='Search your books...'
+          {...props} 
+        />
     </InputWrapper>
   )
 }

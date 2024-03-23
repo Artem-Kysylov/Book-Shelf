@@ -124,8 +124,6 @@ export const Featured = () => {
               el: '.swiper-pagination',
               clickable: true,
             }}
-            onSlideChange={() => console.log('slide change')}
-            onSwiper={(swiper) => console.log(swiper)}
           >
             <SwiperPrevBtn className="prev-button">{<GoChevronLeft style={{height: '40', width: '40'}}/>}</SwiperPrevBtn>
             <SwiperNextBtn className="next-button">{<GoChevronLeft style={{height: '40', width: '40'}}/>}</SwiperNextBtn> 

@@ -62,6 +62,8 @@ const getRandomInt = (min, max) => {
 // Component 
 export const BooksCollection = () => {
     const [books, setBooks] = useState([])
+    const [search, setSearch] = useState('')
+
     const url = BOOKS_API
 
     const randomStart = getRandomInt(0, 99)
@@ -80,6 +82,20 @@ export const BooksCollection = () => {
         FetchData()
     }, [])
 
+
+
+    // Live search function 
+    const filteredBooks = books.filter((book) => {
+        const title = book.title.toLowerCase();
+        const searchQuery = search.trim().toLowerCase()
+        if (!searchQuery) {
+            return true
+        }
+        return title.includes(searchQuery)
+    })    
+    console.log("Filtered Books:", filteredBooks)
+
+
   return (
     <Container>
         <TitleInputWrapper>
@@ -87,21 +103,21 @@ export const BooksCollection = () => {
                 Books Collection
                 <Line/>
             </Title>            
-            <Input/>
+            <Input
+                onChange={(e) => setSearch(e.target.value)}
+            />
         </TitleInputWrapper>
         <BooksItemsContainer>
-        {
-            books.length > 0 && books.map((book) => (
-                <BookItem
-                    key={book.id}
-                    id={book.id}
-                    image={book.image_url}
-                    title={book.title}
-                    authors={book.authors}
-                    genres={book.genres}
-                />
-            ))
-        }             
+            {filteredBooks.length > 0 && filteredBooks.map((book) => (
+            <BookItem
+                key={book.id}
+                id={book.id}
+                image={book.image_url}
+                title={book.title}
+                authors={book.authors}
+                genres={book.genres}
+            />
+        ))}
         </BooksItemsContainer>
     </Container>
   )
