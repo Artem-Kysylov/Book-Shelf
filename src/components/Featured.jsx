@@ -86,7 +86,7 @@ export const Featured = () => {
   const [books, setBooks] = useState([])
   const url = BOOKS_FEATURED_API
 
-  const randomStart = getRandomInt(0, 4)
+  const randomStart = getRandomInt(0, 50)
 
   const FetchData = () => {
     axios.get(`${url}&_start=${randomStart}`)

@@ -3,25 +3,38 @@ import React from 'react'
 import styled from 'styled-components'
 import { useNavigate } from 'react-router-dom'
 
-
 // Style
 const BookItemWrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 15px;
-    cursor: pointer;
 `
 
 const BookItemCover = styled.div`
     width: 277px;
     height: 405px;
     border: 9px solid #FCF6E9;
+    cursor: pointer;
+`
+
+const BookItemImageContainer = styled.div`
+    width: 258px;
+    height: 385px;
+    display: inline-block;
+    overflow: hidden;
 `
 
 const BookItemImage = styled.img`
-    width: 258px;
-    height: 385px;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+    transition: 1s;
+
+    &:hover {
+      scale: 1.32;
+    }
 `
 
 const BookItemTitle = styled.h3`
@@ -42,18 +55,18 @@ const BookItemGenre = styled.p`
 
 // Truncate title function 
 const truncateTitle = (title, maxLength) => {
-    if (title.length <= maxLength) {
+  if (typeof title !== 'string' || title.length <= maxLength) {
       return title;
-    } else {
+  } else {
       let truncatedTitle = title.substring(0, maxLength);
       truncatedTitle = truncatedTitle.substring(0, Math.min(truncatedTitle.length, truncatedTitle.lastIndexOf(" ")));
       return truncatedTitle + "...";
-    }
+  }
 }
 
 
 // Component
-export const BookItem = ({ id, image, title, authors, genres  }) => {
+export const BookItem = ({ id, image, title, authors, genres }) => {
   const truncatedTitle = truncateTitle(title, 78)
 
   const navigate = useNavigate()
@@ -63,9 +76,11 @@ export const BookItem = ({ id, image, title, authors, genres  }) => {
   }
 
   return (
-    <BookItemWrapper onClick={HandleClick}>
-      <BookItemCover>
-        <BookItemImage src={image} alt={title} />
+    <BookItemWrapper>
+      <BookItemCover onClick={HandleClick}>
+        <BookItemImageContainer>
+          {image && <BookItemImage src={image} alt={title} />}
+        </BookItemImageContainer>        
       </BookItemCover>
       <BookItemTitle>
         {truncatedTitle}

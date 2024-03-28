@@ -2,11 +2,19 @@
 import React from 'react'
 import styled from 'styled-components'
 import {Link} from 'react-router-dom'
+import { CiHeart } from "react-icons/ci"
 
 // Import Assets 
 import Logo from '../assets/logo-black.svg'
 
-// Style 
+
+// Style
+const Container = styled.div`
+    max-width: 1200px;
+    padding: 0 10px;
+    margin: 0 auto;
+`
+
 const NavbarWrapper = styled.div`
   display: flex;
   align-items: center;
@@ -23,10 +31,12 @@ const LogoLink = styled(Link)`
 // Component 
 export const Navbar = () => {
   return (
-    <NavbarWrapper>
-      <LogoLink to='/'>
-        <img src={Logo} alt="logo" />
-      </LogoLink>
-    </NavbarWrapper>
+    <Container>
+      <NavbarWrapper>
+        <LogoLink to='/'>
+          <img src={Logo} alt="logo" />
+        </LogoLink>
+      </NavbarWrapper>
+    </Container>
   )
 }

@@ -24,10 +24,10 @@ const MainButton = styled.button`
     }
 `
 
-export const Button = (props) => {
+export const Button = ({ text, ...rest }) => {
   return (
-    <MainButton>
-        {props.text}
+    <MainButton {...rest}>        
+        {text}
     </MainButton>
   )
 }

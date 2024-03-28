@@ -3,10 +3,11 @@ import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
 import { useParams } from 'react-router'
+import { GoChevronLeft } from "react-icons/go"
 
 
 // Import Components
-import { BackButton } from '../components/ui/BackButton'
+import { IconLink } from '../components/ui/IconLink'
 
 
 // Import API 
@@ -56,8 +57,7 @@ const BookAuthor = styled.p`
     text-transform: uppercase;
 `
 
-const BookGenres = styled.p`
-    
+const BookGenres = styled.p`    
     font-size: 13px;
 `
 
@@ -72,7 +72,7 @@ export const Book = () => {
     const url = BOOKS_DETAILS_API
 
     const FetchBookData = () => {
-        axios.get(`${url}/${id}`).then((response) => {
+        axios.get(`${url}/${ id }`).then((response) => {
             console.log(response.data)
             setBook(response.data)
         }).catch((error) => {
@@ -82,11 +82,15 @@ export const Book = () => {
 
     useEffect(() => {
         FetchBookData()
-    }, [id])
+    }, [id])    
 
   return (
     <Container>
-        <BackButton text='go back'/>
+        <IconLink
+            to='/' 
+            text='go back'
+            icon={GoChevronLeft}
+        />
         <BookWrapper>
             <BookCover>
             <BookImage 
@@ -106,7 +110,7 @@ export const Book = () => {
                 <BookQuote>
                     {book?.Quote1}
                 </BookQuote>
-                <p>{book?.description}</p>
+                <p>{book?.description}</p>                
             </ContentWrapper>
         </BookWrapper>
     </Container>

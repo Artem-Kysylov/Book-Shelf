@@ -2,7 +2,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import {Link} from 'react-router-dom'
-import { GoChevronLeft } from "react-icons/go"
 
 
 // Style
@@ -10,7 +9,7 @@ const ButtonWrapper = styled(Link)`
     text-decoration: none;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 5px;
     transition: all .5s ease-in-out;
 
     &:hover {
@@ -24,11 +23,11 @@ const ButtonText = styled.p`
 
 
 // Component 
-export const BackButton = (props) => {
+export const IconLink = ({ to, text, icon: Icon }) => {
   return (
-    <ButtonWrapper to='/'>
-        <GoChevronLeft  style={{height: '24px', width: '24px'}}/>
-        <ButtonText>{props.text}</ButtonText>
+    <ButtonWrapper to={to}>
+        {<Icon style={{ height: '24px', width: '24px' }} />}
+        <ButtonText>{text}</ButtonText>
     </ButtonWrapper>
   )
 }

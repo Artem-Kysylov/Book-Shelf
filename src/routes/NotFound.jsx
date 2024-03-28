@@ -13,7 +13,7 @@ const ContentWrapper = styled.div`
   align-items: center;
   justify-content: center;
   gap: 30px;
-  height: calc(100vh - 77px);
+  height: 80vh;
 `
 
 const MainTitle = styled.h1`

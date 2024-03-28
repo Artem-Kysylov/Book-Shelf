@@ -54,6 +54,17 @@ const BooksItemsContainer = styled.div`
     margin-bottom: 100px;
 `
 
+const SearchNotFound = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+`
+
+const SearchNotFoundTitle = styled.p`
+    text-transform: uppercase;
+`
+
 // Generate random books collection 
 const getRandomInt = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1)) + min
@@ -61,12 +72,14 @@ const getRandomInt = (min, max) => {
 
 // Component 
 export const BooksCollection = () => {
+    // States 
     const [books, setBooks] = useState([])
     const [search, setSearch] = useState('')
+    const [searchNotFound, setSearchNotFound] = useState(false)
 
     const url = BOOKS_API
 
-    const randomStart = getRandomInt(0, 99)
+    const randomStart = getRandomInt(0, 120)
 
     const FetchData = () => {
         axios.get(`${url}&_start=${randomStart}`)
@@ -83,7 +96,6 @@ export const BooksCollection = () => {
     }, [])
 
 
-
     // Live search function 
     const filteredBooks = books.filter((book) => {
         const title = book.title.toLowerCase();
@@ -93,7 +105,10 @@ export const BooksCollection = () => {
         }
         return title.includes(searchQuery)
     })    
-    console.log("Filtered Books:", filteredBooks)
+
+    useEffect(() => {
+        setSearchNotFound(filteredBooks.length === 0 && search.trim() !== '')
+    }, [search, filteredBooks])
 
 
   return (
@@ -108,6 +123,12 @@ export const BooksCollection = () => {
             />
         </TitleInputWrapper>
         <BooksItemsContainer>
+            {searchNotFound && 
+            <SearchNotFound>
+                <SearchNotFoundTitle>
+                    Your search not found...
+                </SearchNotFoundTitle>
+            </SearchNotFound>}
             {filteredBooks.length > 0 && filteredBooks.map((book) => (
             <BookItem
                 key={book.id}
