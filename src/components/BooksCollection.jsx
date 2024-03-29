@@ -47,6 +47,12 @@ const Line = styled.div`
     background: var(--black);
 `
 
+const ContentContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`
+
 const BooksItemsContainer = styled.div`
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -56,6 +62,8 @@ const BooksItemsContainer = styled.div`
 
 const SearchNotFound = styled.div`
     display: flex;
+    flex-direction: column;
+    gap: 10px;
     align-items: center;
     justify-content: center;
     width: 100%;
@@ -63,6 +71,7 @@ const SearchNotFound = styled.div`
 
 const SearchNotFoundTitle = styled.p`
     text-transform: uppercase;
+    font-size: var(--secondary-headline);
 `
 
 // Generate random books collection 
@@ -122,24 +131,29 @@ export const BooksCollection = () => {
                 onChange={(e) => setSearch(e.target.value)}
             />
         </TitleInputWrapper>
-        <BooksItemsContainer>
-            {searchNotFound && 
-            <SearchNotFound>
-                <SearchNotFoundTitle>
-                    Your search not found...
-                </SearchNotFoundTitle>
-            </SearchNotFound>}
-            {filteredBooks.length > 0 && filteredBooks.map((book) => (
-            <BookItem
-                key={book.id}
-                id={book.id}
-                image={book.image_url}
-                title={book.title}
-                authors={book.authors}
-                genres={book.genres}
-            />
-        ))}
-        </BooksItemsContainer>
+        <ContentContainer>
+            {
+            searchNotFound && 
+                <SearchNotFound>
+                    <SearchNotFoundTitle>
+                        Your search not found...                        
+                    </SearchNotFoundTitle>
+                    <p>Please make sure the entered data is correct, or try using different keywords for your search</p>
+                </SearchNotFound>
+            }
+            <BooksItemsContainer>
+                {filteredBooks.length > 0 && filteredBooks.map((book) => (
+                <BookItem
+                    key={book.id}
+                    id={book.id}
+                    image={book.image_url}
+                    title={book.title}
+                    authors={book.authors}
+                    genres={book.genres}
+                />
+            ))}
+            </BooksItemsContainer>
+        </ContentContainer>
     </Container>
   )
 }
