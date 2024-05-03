@@ -26,6 +26,11 @@ const SecondaryTitle = styled.h2`
   font-family: var(--prata);
   font-size: var(--main-headline);
   line-height: 120%;
+  text-align: center;
+
+  @media (max-width: 768px) {
+    font-size: var(--main-headline-mobile);
+  }
 `
 
 

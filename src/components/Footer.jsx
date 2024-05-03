@@ -13,6 +13,10 @@ const WebsiteFooter = styled.footer`
       padding: 15px;
       height: 10vh;
       background: var(--black);
+
+    @media (max-width: 428px) {
+      height: auto;
+  }
 `
 
 const Container = styled.div`
@@ -25,6 +29,11 @@ const FooterWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  @media (max-width: 428px) {
+    flex-direction: column;
+    gap: 20px;
+  }
 `
 
 const LogoLink = styled(Link)`

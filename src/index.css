@@ -64,10 +64,14 @@ input {
     --beige: #FAEED1;
     
     /* Typography  */
+    /* Prata  */
     --prata: 'Prata';
     --main-headline: 60px;
     --secondary-headline: 20px;
+
+    --main-headline-mobile: 40px;
     
+    /* Montserrat  */
     --montserrat: 'Montserrat', sans-serif;
     --text: 15px;
 }

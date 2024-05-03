@@ -35,6 +35,10 @@ const Title = styled.h1`
     color: var(--black);
     position: relative;
     text-align: center;
+
+    @media (max-width: 768px) {
+        font-size: var(--main-headline-mobile);
+    }
 `
 
 const Line = styled.div`

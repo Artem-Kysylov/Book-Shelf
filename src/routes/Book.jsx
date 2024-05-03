@@ -13,7 +13,7 @@ import { IconLink } from '../components/ui/IconLink'
 // Import API 
 import { BOOKS_DETAILS_API } from '../api/API'
 
-
+// Style 
 const Container = styled.div`
     max-width: 1200px;
     padding: 0 10px;
