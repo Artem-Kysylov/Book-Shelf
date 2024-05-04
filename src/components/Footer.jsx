@@ -11,12 +11,8 @@ import Logo from '../assets/logo-light.svg'
 const WebsiteFooter = styled.footer`
       width: 100%;
       padding: 15px;
-      height: 10vh;
-      background: var(--black);
-
-    @media (max-width: 428px) {
       height: auto;
-  }
+      background: var(--black);
 `
 
 const Container = styled.div`

@@ -62,6 +62,12 @@ const BooksItemsContainer = styled.div`
     grid-template-columns: repeat(4, 1fr);
     gap: 30px;
     margin-bottom: 100px;
+
+    @media (max-width: 1000px) {
+        grid-template-columns: repeat(auto-fill, minmax(277px, 1fr));
+        grid-auto-rows: auto;
+        grid-auto-flow: row;
+    }
 `
 
 const SearchNotFound = styled.div`

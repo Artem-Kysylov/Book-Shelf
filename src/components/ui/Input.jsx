@@ -13,6 +13,10 @@ const InputWrapper = styled.div`
     border: 1px solid var(--black);
     border-radius: 2px;
     width: 628px;
+
+    @media (max-width: 768px) {
+      width: 100%;
+    }
 `
 
 const StyledInput = styled.input`

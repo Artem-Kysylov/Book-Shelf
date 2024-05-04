@@ -21,7 +21,7 @@ const NavbarWrapper = styled.div`
   justify-content: center;
   width: 100%;
   padding: 15px;
-  height: 10vh;
+  height: auto;
 `
 
 const LogoLink = styled(Link)`

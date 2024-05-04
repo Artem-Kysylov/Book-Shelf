@@ -25,7 +25,11 @@ const BookWrapper = styled.div`
     justify-content: space-between;
     align-items: center;
     gap: 30px;
-    min-height: 80vh;
+    margin-bottom: 50px;
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+    }
 `
 
 const BookCover = styled.div`
@@ -51,6 +55,10 @@ const ContentWrapper = styled.div`
 const BookTitle = styled.h1`
     font-family: var(--prata);
     font-size: var(--main-headline);
+
+    @media (max-width: 768px) {
+        font-size: var(--main-headline-mobile);
+    }
 `
 
 const BookAuthor = styled.p`
@@ -90,6 +98,7 @@ export const Book = () => {
             to='/' 
             text='go back'
             icon={GoChevronLeft}
+            style={{marginBottom: '15px'}}
         />
         <BookWrapper>
             <BookCover>

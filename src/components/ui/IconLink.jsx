@@ -23,9 +23,9 @@ const ButtonText = styled.p`
 
 
 // Component 
-export const IconLink = ({ to, text, icon: Icon }) => {
+export const IconLink = ({ to, text, icon: Icon, style }) => {
   return (
-    <ButtonWrapper to={to}>
+    <ButtonWrapper to={to} style={style}>
         {<Icon style={{ height: '24px', width: '24px' }} />}
         <ButtonText>{text}</ButtonText>
     </ButtonWrapper>
