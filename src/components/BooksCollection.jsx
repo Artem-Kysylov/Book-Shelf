@@ -63,7 +63,7 @@ const BooksItemsContainer = styled.div`
     gap: 30px;
     margin-bottom: 100px;
 
-    @media (max-width: 1000px) {
+    @media (max-width: 1300px) {
         grid-template-columns: repeat(auto-fill, minmax(277px, 1fr));
         grid-auto-rows: auto;
         grid-auto-flow: row;

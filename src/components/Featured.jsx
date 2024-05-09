@@ -124,6 +124,7 @@ export const Featured = () => {
               el: '.swiper-pagination',
               clickable: true,
             }}
+
           >
             <SwiperPrevBtn className="prev-button">{<GoChevronLeft style={{height: '40', width: '40'}}/>}</SwiperPrevBtn>
             <SwiperNextBtn className="next-button">{<GoChevronLeft style={{height: '40', width: '40'}}/>}</SwiperNextBtn> 

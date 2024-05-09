@@ -35,6 +35,10 @@ const ItemContentTitle = styled.p`
     font-size: var(--main-headline);
     color: var(--black);
     position: relative;
+
+    @media (max-width: 768px) {
+        font-size: var(--main-headline-mobile);
+    }
 `
 
 const ItemContentAuthor = styled.p`

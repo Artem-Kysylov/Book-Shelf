@@ -9,6 +9,11 @@ const BookItemWrapper = styled.div`
     flex-direction: column;
     align-items: flex-start;
     gap: 15px;
+    width: 100%;
+
+    @media (max-width: 900px) {
+      align-items: center;
+    }
 `
 
 const BookItemCover = styled.div`
@@ -41,6 +46,10 @@ const BookItemTitle = styled.h3`
     font-family: var(--prata);
     font-size: var(--secondary-headline);
     line-height: 130%;
+
+    @media (max-width: 900px) {
+      text-align: center;
+    }
 `
 
 const BookItemAuthor = styled.p`
@@ -51,6 +60,10 @@ const BookItemAuthor = styled.p`
 const BookItemGenre = styled.p`
     font-family: var(--montserrat);
     font-size: 13px;
+
+    @media (max-width: 900px) {
+      text-align: center;
+    }
 `
 
 // Truncate title function 
