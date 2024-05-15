@@ -21,6 +21,11 @@ const ItemWrapper = styled.div`
     gap: 30px;
     margin: 35px 0 100px 0;
     width: 90%;
+
+    @media (max-width: 768px) {
+      flex-direction: column-reverse;
+      text-align: center;    
+    }
 `
 
 const ItemContent = styled.div`
@@ -28,6 +33,10 @@ const ItemContent = styled.div`
     flex-direction: column;
     align-items: flex-start;
     gap: 20px;
+
+    @media (max-width: 768px) {
+        align-items: center;
+    }
 `
 
 const ItemContentTitle = styled.p`

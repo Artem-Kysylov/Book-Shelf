@@ -37,6 +37,10 @@ const SwiperPrevBtn = styled.div`
     transform: translateY(-50%);
     z-index: 10;
     cursor: pointer;
+
+    @media (max-width: 1000px) {
+      display: none;
+    }
 `
 
 const SwiperNextBtn = styled.div`
@@ -47,32 +51,10 @@ const SwiperNextBtn = styled.div`
     transform: scaleX(-1);
     z-index: 10;
     cursor: pointer;
-`
 
-const SwiperPagination = styled.div`
-    position: absolute;
-    bottom: 100px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    list-style: none;
-    padding: 0;
-`
-
-const SwiperPaginationItem = styled.div`
-    width: 10px;
-    height: 10px;
-    margin: 0 5px;
-    border-radius: 50%;
-    cursor: pointer;
-    background-color: var(--black);
-    opacity: 0.3;
-`
-
-const SwiperPaginationItemActive = styled(SwiperPaginationItem)`
-    opacity: 1;
+    @media (max-width: 1000px) {
+      display: none;
+    }
 `
 
 // Generate random books collection 
@@ -121,13 +103,32 @@ export const Featured = () => {
               nextEl: '.next-button',
             }}
             pagination={{
-              el: '.swiper-pagination',
-              clickable: true,
+              clickable: true
             }}
-
+            style={{
+              "--swiper-pagination-color": "#000000",
+              "--swiper-pagination-bullet-inactive-color": "#999999",
+              "--swiper-pagination-bullet-inactive-opacity": "1",
+              "--swiper-pagination-bullet-size": "10px",
+              "--swiper-pagination-bullet-horizontal-gap": "10px",
+          }}
           >
-            <SwiperPrevBtn className="prev-button">{<GoChevronLeft style={{height: '40', width: '40'}}/>}</SwiperPrevBtn>
-            <SwiperNextBtn className="next-button">{<GoChevronLeft style={{height: '40', width: '40'}}/>}</SwiperNextBtn> 
+            <SwiperPrevBtn className="prev-button">
+              {<GoChevronLeft 
+              style={{
+                height: '40', 
+                width: '40'
+                }}
+              />}
+            </SwiperPrevBtn>
+            <SwiperNextBtn className="next-button">
+              {<GoChevronLeft 
+              style={{
+                height: '40', 
+                width: '40'
+                }}
+              />}
+            </SwiperNextBtn> 
             {books.map((book) => (
                 <SwiperSlide key={book.id}>
                   <FeaturedItem
@@ -138,13 +139,7 @@ export const Featured = () => {
                     description={book.description}
                   />
                 </SwiperSlide>
-            ))}                   
-            <SwiperPagination className="swiper-pagination">
-              <SwiperPaginationItemActive/>
-              <SwiperPaginationItem/>
-              <SwiperPaginationItem/>
-              <SwiperPaginationItem/>
-            </SwiperPagination>               
+            ))}                               
         </Swiper>
       </Container>     
   )
