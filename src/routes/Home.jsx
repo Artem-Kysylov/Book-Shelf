@@ -10,9 +10,9 @@ import { Featured } from '../components/Featured'
 // Component 
 export const Home = () => {
   return (
-    <div>
+    <>
         <Featured/>
         <BooksCollection/>
-    </div>
+    </>
   )
 }

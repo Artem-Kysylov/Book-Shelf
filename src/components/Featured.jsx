@@ -65,7 +65,9 @@ const getRandomInt = (min, max) => {
 
 // Component 
 export const Featured = () => {
+  // State 
   const [books, setBooks] = useState([])
+  // Get API 
   const url = BOOKS_FEATURED_API
 
   const randomStart = getRandomInt(0, 50)

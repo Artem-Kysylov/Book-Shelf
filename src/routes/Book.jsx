@@ -74,9 +74,13 @@ const BookQuote = styled.p`
     font-size: var(--secondary-headline);
 `
 
+// Component 
 export const Book = () => {
+    // State 
     const [book, setBook] = useState({})
+    // UseParams hook 
     const { id } = useParams()
+    // Book API 
     const url = BOOKS_DETAILS_API
 
     const FetchBookData = () => {

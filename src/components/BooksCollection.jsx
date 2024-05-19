@@ -26,6 +26,7 @@ const TitleInputWrapper = styled.div`
     align-items: center;
     justify-content: center;
     gap: 30px;
+    margin-top: 100px;
     margin-bottom: 30px;
 `
 
@@ -95,7 +96,7 @@ export const BooksCollection = () => {
     const [books, setBooks] = useState([])
     const [search, setSearch] = useState('')
     const [searchNotFound, setSearchNotFound] = useState(false)
-
+    // Books API 
     const url = BOOKS_API
 
     const randomStart = getRandomInt(0, 120)

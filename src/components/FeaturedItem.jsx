@@ -19,7 +19,7 @@ const ItemWrapper = styled.div`
     display: flex;
     align-items: center;
     gap: 30px;
-    margin: 35px 0 100px 0;
+    margin-top: 35px;
     width: 90%;
 
     @media (max-width: 768px) {
