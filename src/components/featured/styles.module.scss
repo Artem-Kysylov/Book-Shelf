@@ -1,0 +1,35 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.container {
+    @include container;
+    @include flex-center;
+    position: relative;
+
+    .swiperPrevBtn,
+    .swiperNextBtn {
+        position: absolute;
+        top: 50%;
+        z-index: 10;
+        cursor: pointer;
+        transition: opacity 0.3s ease;
+
+        &:hover {
+            opacity: 0.8;
+        }
+
+        @include desktop {
+            display: none;
+        }
+    }
+
+    .swiperPrevBtn {
+        left: $spacing-m;
+        transform: translateY(-50%);
+    }
+
+    .swiperNextBtn {
+        right: $spacing-m;
+        transform: translateY(-50%) scaleX(-1);
+    }
+}

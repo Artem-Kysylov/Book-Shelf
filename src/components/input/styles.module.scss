@@ -1,0 +1,34 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.inputWrapper {
+    display: flex;
+    align-items: center;
+    gap: $spacing-s;
+    padding: $spacing-l;
+    border: 1px solid $black;
+    border-radius: $border-radius;
+    width: 628px;
+
+    @include tablet {
+        width: 100%;
+    }
+
+    .styledInput {
+        font-family: $montserrat;
+        color: $gray;
+        font-size: $text;
+        width: 100%;
+
+        &:focus {
+            color: $black;
+        }
+    }
+
+    .searchIcon {
+        height: 24px;
+        width: 24px;
+        color: $gray;
+        flex-shrink: 0;
+    }
+}

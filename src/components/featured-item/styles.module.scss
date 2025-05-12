@@ -1,0 +1,56 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.parentItemContainer {
+    width: 100%;
+    @include flex-center;
+
+    .itemWrapper {
+        display: flex;
+        align-items: center;
+        gap: $spacing-xl;
+        margin-top: $spacing-xl;
+        width: 90%;
+
+        @include tablet {
+            @include flex-column-center;
+            text-align: center;    
+        }
+
+        .itemContent {
+            @include flex-column;
+            align-items: flex-start;
+            gap: $spacing-l;
+
+            @include tablet {
+                align-items: center;
+            }
+
+            .itemContentTitle {
+                font-family: $prata;
+                font-size: $main-headline;
+                color: $black;
+                position: relative;
+
+                @include tablet {
+                    font-size: $main-headline-mobile;
+                }
+            }
+
+            .itemContentAuthor {
+                text-transform: uppercase;
+            }
+        }
+
+        .itemBookCover {
+            width: 280px;
+            height: 409px;
+            border: $spacing-m solid $light-beige;
+
+            .itemBookImage {
+                width: 250px;
+                height: 379px;
+            }
+        }
+    }
+}

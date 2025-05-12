@@ -1,0 +1,30 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.mainButton {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    display: inline-block;
+    padding: $spacing-l;
+    width: 220px;
+    border: 1px solid $black;
+    border-radius: $border-radius;
+    background: transparent;
+    color: $black;
+    font-family: $montserrat;
+    font-size: $text;
+    text-transform: uppercase;
+    box-shadow: inset 0 0 0 0 $black;
+    transition: all 0.5s ease-in-out;
+
+    @include mobile {
+        width: 100%;
+        padding: $spacing-m;
+    }
+
+    &:hover {
+        color: $beige;
+        box-shadow: inset 400px 0 0 0 $black;
+    }
+}

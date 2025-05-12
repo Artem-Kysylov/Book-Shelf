@@ -1,0 +1,67 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.container {
+    @include container;
+
+    .titleInputWrapper {
+        @include flex-column-center;
+        gap: $spacing-xl;
+        margin: $spacing-xxl 0 $spacing-xl;
+
+        .title {
+            font-family: $prata;
+            font-size: $main-headline;
+            color: $black;
+            position: relative;
+            text-align: center;
+
+            @include tablet {
+                font-size: $main-headline-mobile;
+            }
+
+            .line {
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                transform: translateX(-50%);
+                height: 1px;
+                width: 200px;
+                background: $black;
+            }
+        }
+    }
+
+    .contentContainer {
+        @include flex-column-center;
+
+        .booksItemsContainer {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: $spacing-xl;
+            margin-bottom: $spacing-xxl;
+
+            @include desktop {
+                grid-template-columns: repeat(auto-fill, minmax(277px, 1fr));
+                grid-auto-rows: auto;
+                grid-auto-flow: row;
+            }
+
+            @include mobile {
+                gap: $spacing-l;
+            }
+        }
+
+        .searchNotFound {
+            @include flex-column-center;
+            gap: $spacing-s;
+            width: 100%;
+
+            .searchNotFoundTitle {
+                text-transform: uppercase;
+                font-size: $secondary-headline;
+                font-family: $montserrat;
+            }
+        }
+    }
+}

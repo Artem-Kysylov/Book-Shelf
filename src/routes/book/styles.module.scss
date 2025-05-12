@@ -1,0 +1,112 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.container {
+    @include container;
+    min-height: calc(100vh - 180px);
+    padding: $spacing-xl 0;
+
+    .bookWrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: $spacing-xl;
+        margin-bottom: $spacing-xl;
+
+        @include tablet {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: $spacing-xxl;
+        }
+
+        .bookCover {
+            width: 384px;
+            height: 560px;
+            border: $spacing-l solid $light-beige;
+            flex: 1;
+
+            @include tablet {
+                width: 320px;
+                height: 480px;
+
+                .bookImage {
+                    width: 285px;
+                    height: 440px;
+                }
+            }
+
+            @include mobile {
+                width: 277px;
+                height: 405px;
+
+                .bookImage {
+                    width: 258px;
+                    height: 385px;
+                }
+            }
+
+            .bookImage {
+                width: 342px;
+                height: 519px;
+                object-fit: cover;
+            }
+        }
+
+        .contentWrapper {
+            @include flex-column;
+            align-items: flex-start;
+            gap: $spacing-l;
+            flex: 3;
+
+            @include tablet {
+                align-items: center;
+                text-align: center;
+                padding: 0 $spacing-m;
+            }
+
+            .bookTitle {
+                font-family: $prata;
+                font-size: $main-headline;
+                color: $black;
+
+                @include tablet {
+                    font-size: $main-headline-mobile;
+                }
+            }
+
+            .bookAuthor {
+                text-transform: uppercase;
+                color: $black;
+                font-family: $montserrat;
+            }
+
+            .bookGenres {
+                font-size: $small-text;
+                color: $black;
+                font-family: $montserrat;
+            }
+
+            .bookQuote {
+                text-transform: uppercase;
+                font-size: $secondary-headline;
+                font-family: $montserrat;
+                color: $black;
+                font-style: italic;
+                position: relative;
+                padding-left: $spacing-l;
+                margin: $spacing-l 0;
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    width: 2px;
+                    height: 100%;
+                    background-color: $black;
+                }
+            }
+        }
+    }
+}

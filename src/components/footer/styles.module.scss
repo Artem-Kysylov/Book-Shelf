@@ -1,0 +1,48 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.websiteFooter {
+    width: 100%;
+    padding: $spacing-xl 0;
+    background: $black;
+
+    .container {
+        @include container;
+
+        .footerWrapper {
+            @include flex-center;
+            justify-content: space-between;
+            gap: $spacing-xl;
+
+            @include tablet {
+                padding: 0 $spacing-m;
+            }
+
+            @include mobile {
+                @include flex-column-center;
+                gap: $spacing-l;
+                padding: 0 $spacing-s;
+            }
+
+            .logoLink {
+                text-decoration: none;
+                transition: opacity 0.3s ease;
+
+                &:hover {
+                    opacity: 0.8;
+                }
+
+                img {
+                    max-width: 150px;
+                    height: auto;
+                }
+            }
+
+            .copyright {
+                color: $beige;
+                font-size: $small-text;
+                font-family: $montserrat;
+            }
+        }
+    }
+}

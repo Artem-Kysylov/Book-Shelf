@@ -1,0 +1,26 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.contentWrapper {
+    @include flex-column-center;
+    justify-content: center;
+    gap: $spacing-xl;
+    height: 80vh;
+
+    .mainTitle {
+        font-family: $prata;
+        font-size: 120px;
+        line-height: 120%;
+    }
+
+    .secondaryTitle {
+        font-family: $prata;
+        font-size: $main-headline;
+        line-height: 120%;
+        text-align: center;
+
+        @include tablet {
+            font-size: $main-headline-mobile;
+        }
+    }
+}

@@ -1,11 +1,11 @@
 import { Routes, Route } from 'react-router-dom'
 
 // Components and routes imports 
-import { Navbar } from './components/Navbar'
-import { Footer } from './components/Footer'
-import { Home } from './routes/Home'
-import { NotFound } from './routes/NotFound'
-import { Book } from './routes/Book'
+import { Navbar } from './components/navbar/Navbar'
+import { Footer } from './components/footer/Footer'
+import { Home } from './routes/home/Home'
+import { NotFound } from './routes/not-found/NotFound'
+import { Book } from './routes/book/Book'
 
 function App() {
 
