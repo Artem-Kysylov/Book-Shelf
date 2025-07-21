@@ -25,7 +25,7 @@
 
 ### 🚀 Live Demo
 
-[Live Demo on Vercel →](https://bookshelf.vercel.app)
+[Live Demo on Vercel →](https://book-shelf-six-woad.vercel.app/)
 *(Replace this link with your actual deployment URL)*
 
 ---
